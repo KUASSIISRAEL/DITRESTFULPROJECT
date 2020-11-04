@@ -14,16 +14,16 @@ class GerantSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 class MagasinSerializer(serializers.HyperlinkedModelSerializer):
-    gerant = serializers.SlugRelatedField(queryset=Gerant.objects.all(), slug_field='pk')
-    url = serializers.HyperlinkedIdentityField(view_name='magasin-details', lookup_field='pk')
+    gerant = serializers.SlugRelatedField(queryset = Gerant.objects.all(), slug_field = 'pk')
+    url    = serializers.HyperlinkedIdentityField(view_name = 'magasin-details', lookup_field  = 'pk')
 
     class Meta:
         model  = Magasin
         fields = '__all__'
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
-    magasin = serializers.SlugRelatedField(queryset=Magasin.objects.all(), slug_field='pk')
-    url = serializers.HyperlinkedIdentityField(view_name='article-details', lookup_field='pk')
+    magasin = serializers.SlugRelatedField(queryset = Magasin.objects.all(), slug_field = 'pk')
+    url     = serializers.HyperlinkedIdentityField(view_name = 'article-details', lookup_field   = 'pk')
 
     class Meta:
         model  = Article
@@ -32,22 +32,23 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='customer-details', lookup_field='pk')
+    
     class Meta:
         model  = Customer
         fields = '__all__'
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
-    article  = ArticleSerializer()
-    customer = CustomerSerializer()
-    url = serializers.HyperlinkedIdentityField(view_name='order-details', lookup_field='pk')
+    article  = serializers.SlugRelatedField(queryset= Article.objects.all(), slug_field='pk')
+    customer = serializers.SlugRelatedField(queryset= Customer.objects.all(), slug_field = 'pk')
+    url      = serializers.HyperlinkedIdentityField(view_name = 'order-details', lookup_field      = 'pk')
 
     class Meta:
         model  = Order
         fields = '__all__'
 
 class InvoiceSerializer(serializers.HyperlinkedModelSerializer):
-    order = OrderSerializer()
-    url = serializers.HyperlinkedIdentityField(view_name='invoice-details', lookup_field='pk')
+    order = serializers.SlugRelatedField(queryset= Order.objects.all(), slug_field = 'pk')
+    url   = serializers.HyperlinkedIdentityField(view_name = 'invoice-details', lookup_field = 'pk')
     
     class Meta:
         model  = Invoice

@@ -22,7 +22,7 @@ class MagasinSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
-    magasin = serializers.SlugRelatedField(queryset = Magasin.objects.all(), slug_field = 'pk', many=True)
+    magasin = serializers.SlugRelatedField(queryset = Magasin.objects.all(), slug_field = 'pk')
     url     = serializers.HyperlinkedIdentityField(view_name = 'article-details', lookup_field   = 'pk')
 
     class Meta:

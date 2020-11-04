@@ -19,7 +19,7 @@ urlpatterns = [
         name=views.MagasinDetail.name),
 
     path('articles/',  
-        views.MagasinList.as_view(),  
+        views.ArticleList.as_view(),  
         name=views.MagasinList.name),
 
     path('article/<int:pk>/',  

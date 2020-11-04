@@ -22,9 +22,10 @@ class Magasin(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
 
 class Article(models.Model):
-    magasin = models.OneToOneField(Magasin, on_delete=models.CASCADE)
+    magasin = models.ForeignKey(Magasin, on_delete=models.CASCADE)
     name    = models.CharField(max_length=255)
     stock   = models.IntegerField(default=0)
+    image   = models.ImageField(width_field='150', height_field='120', blank=True, default='')
     describe= models.TextField(verbose_name="desciption")
     price   = models.DecimalField(max_digits=10, decimal_places=3)
     created = models.DateTimeField(auto_now_add=True)

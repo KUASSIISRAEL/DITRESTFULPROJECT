@@ -20,33 +20,33 @@ urlpatterns = [
 
     path('articles/',  
         views.ArticleList.as_view(),  
-        name=views.MagasinList.name),
+        name=views.ArticleList.name),
 
     path('article/<int:pk>/',  
-        views.ArticleList.as_view(), 
+        views.ArticleDetail.as_view(), 
         name=views.ArticleDetail.name),
 
     path('customers/',  
-        views.MagasinList.as_view(),  
-        name=views.MagasinList.name),
+        views.CustomerList.as_view(),  
+        name=views.CustomerList.name),
 
     path('customer/<int:pk>/',  
-        views.CustomerList.as_view(), 
+        views.CustomerDetail.as_view(), 
         name=views.CustomerDetail.name), 
 
     path('orders/',  
-        views.MagasinList.as_view(),  
-        name=views.MagasinList.name),
+        views.OrderList.as_view(),  
+        name=views.OrderList.name),
 
     path('order/<int:pk>/',  
-        views.OrderList.as_view(), 
+        views.OrderDetail.as_view(), 
         name=views.OrderDetail.name),
 
     path('invoices/',  
-        views.MagasinList.as_view(),  
-        name=views.MagasinList.name),
+        views.InvoiceList.as_view(),  
+        name=views.InvoiceList.name),
 
     path('invoice/<int:pk>/',  
-        views.InvoiceList.as_view(), 
+        views.InvoiceDetail.as_view(), 
         name=views.InvoiceDetail.name),
 ]
